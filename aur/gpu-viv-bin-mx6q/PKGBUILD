@@ -14,5 +14,5 @@ package() {
 	mv ${srcdir}/gpu-viv-bin-mx6q-3.0.35-4.1.0/* ${pkgdir}/
 
 	install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
-	cp ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+	install -DTm755 ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
