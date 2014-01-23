@@ -1,0 +1,16 @@
+# Maintainer: Daniel Ranger <dranger003@gmail.com>
+pkgname=firmware-imx
+pkgver=3.0.35_4.1.0
+pkgrel=1
+pkgdesc="i.MX6 Linux BSP Firmware Files (L3.0.35_4.1.0_SOURCE_BSP)"
+arch=(armv7h)
+url="https://community.freescale.com/docs/DOC-95560"
+license=('FREESCALE SOFTWARE LICENSE AGREEMENT')
+source=(firmware-imx-3.0.35-4.1.0.tar.gz)
+md5sums=('f5dc03402b97a992094d114aebb826a3')
+
+package() {
+	install -Ddm755 ${srcdir}/firmware-imx-3.0.35-4.1.0/firmware/vpu ${pkgdir}/lib/firmware/vpu
+	cp --no-preserve=ownership ${srcdir}/firmware-imx-3.0.35-4.1.0/firmware/vpu/* ${pkgdir}/lib/firmware/vpu/
+	install -DTm755 ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
