@@ -12,7 +12,10 @@ md5sums=('a8812e828e7ca68825a14e20615fc899')
 
 package() {
 	mv ${srcdir}/gpu-viv-bin-mx6q-3.0.35-4.1.0/* ${pkgdir}/
-
 	install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
 	install -DTm755 ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	rm ${pkgdir}/usr/lib/*-x11* ${pkgdir}/usr/lib/*-wl* ${pkgdir}/usr/lib/*-dfb*
+	ln -sf libOpenVG_3D.so ${pkgdir}/usr/lib/libOpenVG.so
+
+	ls -l ${pkgdir}/usr/lib/libEGL* ${pkgdir}/usr/lib/libGAL* ${pkgdir}/usr/lib/libVIVANTE* ${pkgdir}/usr/lib/libOpenVG*
 }
