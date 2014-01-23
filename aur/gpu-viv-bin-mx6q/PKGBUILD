@@ -1,21 +1,17 @@
 # Maintainer: Daniel Ranger <dranger003@gmail.com>
 pkgname=gpu-viv-bin-mx6q
-pkgver=3.0.35_4.1.0
+pkgver=3.0.35_4.0.0
 pkgrel=1
-pkgdesc="i.MX6 Linux BSP Vivante GPU Files (L3.0.35_4.1.0_SOURCE_BSP)"
+pkgdesc="i.MX6 Linux BSP Vivante GPU Files (L3.0.35_4.0.0_SOURCE_BSP)"
 arch=(armv7h)
-url="https://community.freescale.com/docs/DOC-95560"
+url="https://community.freescale.com/docs/DOC-94809"
 conflicts=('mesa' 'mesa-libgl' 'mesa-demos')
 license=('FREESCALE SOFTWARE LICENSE AGREEMENT')
-source=(gpu-viv-bin-mx6q-3.0.35-4.1.0.tar.gz)
-md5sums=('a8812e828e7ca68825a14e20615fc899')
+source=(gpu-viv-bin-mx6q-3.0.35-4.0.0.tar.gz)
+md5sums=('0bdb1dc6b757309269737da816231c10')
 
 package() {
-	mv ${srcdir}/gpu-viv-bin-mx6q-3.0.35-4.1.0/* ${pkgdir}/
-	install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
-	install -DTm755 ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	rm ${pkgdir}/usr/lib/*-x11* ${pkgdir}/usr/lib/*-wl* ${pkgdir}/usr/lib/*-dfb*
+	cp -rP --no-preserve=ownership ${srcdir}/gpu-viv-bin-mx6q-3.0.35-4.0.0/hardfp/* ${pkgdir}/
+	install -DTm644 ${startdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	ln -sf libOpenVG_3D.so ${pkgdir}/usr/lib/libOpenVG.so
-
-	ls -l ${pkgdir}/usr/lib/libEGL* ${pkgdir}/usr/lib/libGAL* ${pkgdir}/usr/lib/libVIVANTE* ${pkgdir}/usr/lib/libOpenVG*
 }
